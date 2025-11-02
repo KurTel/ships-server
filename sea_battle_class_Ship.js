@@ -1,4 +1,4 @@
-class Ship {
+export class Ship {
     size = null;
     hits = 0;
     isShipSank = false;

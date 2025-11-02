@@ -1,4 +1,4 @@
-class Board {
+export class Board {
     grid = [];
     size = 10;
     ships = [];

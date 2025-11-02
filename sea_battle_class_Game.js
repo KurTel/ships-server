@@ -1,5 +1,6 @@
+import readlineSync from 'readline-sync';
 
-class Game {
+export class Game {
   player_1 = null;
     player_2 = null;
     current_player = null;
@@ -37,7 +38,9 @@ class Game {
     }
 
     getGameAgain() {
-        let gameAgain = prompt('Начать новую игру?');
+        // let gameAgain = prompt('Начать новую игру?');
+        let gameAgain= readlineSync.question('Начать новую игру?:  ')
+
         if(gameAgain == 'да' || gameAgain == 'да') {
             this.player_1.gameBoard.updateBoard();
             this.player_2.gameBoard.updateBoard();
@@ -66,11 +69,13 @@ class Game {
     }
 
     makeShotCoord(player) {
-        let playerHandCoord = prompt('Введите букву и число');
+        // let playerHandCoord = prompt('Введите букву и число');
+        let playerHandCoord= readlineSync.question('Введите букву и число: ')
+
 console.log(playerHandCoord);
 
         if(playerHandCoord == null || playerHandCoord == '') { 
-            this.makeShotCoord(player); 
+            this.makeShotCoord(player);
         }
         let coordsX = ['а', 'б', 'в', 'г', 'д', 'е', 'ж', 'з', 'и', 'к' ];
         let col = coordsX.indexOf(playerHandCoord[0].toLowerCase());

@@ -1,4 +1,7 @@
-class Player {
+import { Board } from "./sea_battle_class_Board.js";
+import { Ship } from "./sea_battle_class_Ship.js";
+
+export class Player {
     name = '';
     isComputer = false;
     scoreWin = 0;
