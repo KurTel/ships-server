@@ -20,6 +20,16 @@ class GamesController {
 
         return null
     }
+
+    stopByUserId(userId) {
+        const gameId = this.getGameIdByUser(userId)
+        this.stop(gameId)
+    }
+
+    stop(gameId) {
+        this.games.has(gameId) && this.games.delete(gameId)
+        console.error('gameId ', gameId, ' stopped')
+    }
 }
 
 const gamesController = new GamesController()
