@@ -3,9 +3,7 @@ import gemaConnector from '../../services/game/game-connector.js'
 
 const router = Router();
 
-router.get('/find', (req, res) => {
-    const receivedData = req.body;
-    console.log('Received POST data:', receivedData);
+router.post('/find', (req, res) => {
     const data = gemaConnector.find(req.userId, req.body?.name)
     res.json({ data } );
 });
