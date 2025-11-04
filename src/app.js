@@ -13,8 +13,10 @@ app.use(cors({
         // Разрешаем запросы без origin (например, из Postman)
         if (!origin) return callback(null, true);
 
+        console.error({origin})
+
         const allowedOrigins = [
-            'index.html',
+            'http://127.0.0.1:8000',
         ];
 
         if (allowedOrigins.indexOf(origin) !== -1) {
@@ -29,5 +31,7 @@ app.use(express.json());
 
 app.use(authMiddleware);
 app.use('/', routes);
+
+app.options(/.*/, cors());
 
 export default app;

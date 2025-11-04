@@ -49,6 +49,7 @@ class GameConnector {
     }
 
     check(userId) {
+        console.error({waitingUsersMap})
         const gameId = gamesController.getGameIdByUser(userId)
         if (gameId) {
             return { state: { gameId, userId } }

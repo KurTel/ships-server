@@ -5,6 +5,11 @@ import { v4 } from 'uuid';
  * Проверяет cookie userId, если нет — создаёт новую.
  */
 export const authMiddleware = (req, res, next) => {
+    console.error('req.method = ', req.method)
+    if (req.method === 'OPTIONS') {
+        // ⚡ Пропускаем preflight без проверки авторизации
+        return next();
+    }
     // Проверяем, есть ли уже userId
     let userId = req.cookies?.userId;
 
@@ -12,11 +17,13 @@ export const authMiddleware = (req, res, next) => {
         // Генерируем уникальный id
         userId = v4();
 
+
+        // FIXME настроить правильно!!!
         // Устанавливаем cookie с этим id
         res.cookie('userId', userId, {
             httpOnly: true, // Нельзя прочитать из JS (безопасно)
-            secure: false,  // true, если HTTPS (на проде)
-            sameSite: 'lax', // защита от CSRF
+            // secure: false,  // true, если HTTPS (на проде)
+            // sameSite: 'none', // защита от CSRF
             maxAge: 1000 * 60 * 60 * 24 * 30 // 30 дней
         });
 
