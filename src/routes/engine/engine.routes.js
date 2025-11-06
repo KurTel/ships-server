@@ -6,7 +6,7 @@ const router = Router();
 
 router.post('/stop', (req, res) => {
     gamesController.stopByUserId(req.userId)
-    res.json();
+    res.json({});
 });
 
 export default router;

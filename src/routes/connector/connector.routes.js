@@ -15,7 +15,7 @@ router.get('/check', (req, res) => {
 
 router.get('/stop', (req, res) => {
     gemaConnector.stop(req.userId)
-    res.json();
+    res.json({});
 });
 
 export default router;
